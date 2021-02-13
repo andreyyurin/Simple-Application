@@ -1,0 +1,90 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "sad.ru.testapp"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    def BASE_URL = "BASE_URL"
+    def TOKEN = "TOKEN"
+    def STRING = "String"
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            buildConfigField STRING, BASE_URL, "\"https://gorest.co.in/public-api/\""
+            buildConfigField STRING, TOKEN, "\"5c7189df27d1631607f10545bb592ec3e7da915a988549f568be40170e0d18ce\""
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable true
+            buildConfigField STRING, BASE_URL, "\"https://gorest.co.in/public-api/\""
+            buildConfigField STRING, TOKEN, "\"5c7189df27d1631607f10545bb592ec3e7da915a988549f568be40170e0d18ce\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Moxy
+    implementation "com.arello-mobile:moxy:1.5.3"
+    kapt "com.arello-mobile:moxy-compiler:1.5.3"
+
+    // WORKING WITH ANDROID X
+    implementation('tech.schoolhelper:moxy-x-androidx:1.7.0') {
+        exclude group: 'tech.schoolhelper', module: 'moxy-x'
+    }
+
+    // Google Material
+    implementation 'com.google.android.material:material:1.2.1'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+
+    // RxJava
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    // Cicerone
+    implementation "ru.terrakok.cicerone:cicerone:5.0.0"
+
+    // Google maps
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+}

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Test Application</string>
+
+    <string name="remove_user_dialog_title">Are you sure you want to remove this user?</string>
+    <string name="remove_user_dialog_yes">OK</string>
+    <string name="remove_user_dialog_no">No</string>
+
+    <string name="add_user_dialog_title">Add new user</string>
+    <string name="add_user_dialog_yes">OK</string>
+    <string name="add_user_dialog_no">No</string>
+
+    <string name="add_user_name">Name</string>
+    <string name="add_user_email">Email</string>
+</resources>
